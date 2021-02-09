@@ -13,8 +13,8 @@ import { ApiService } from './api.service';
 export class AppComponent {
   title = 'oc-frontend';
 
-  form = new FormGroup({
-    "username": new FormControl("", Validators.required),
+  loginForm = new FormGroup({
+    "username": new FormControl("", [Validators.required, Validators.email]),
     "password": new FormControl("", Validators.required),
   })
 
@@ -27,7 +27,7 @@ export class AppComponent {
   }
 
   submitLogin() {
-    let values = this.form.value
+    let values = this.loginForm.value
     var formData = new FormData();
     formData.append("name", values.username);
     formData.append("password", values.password);

@@ -9,34 +9,12 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-  body {
-    height: 100vh;
-  }
-
-  .card-container {
-    display: flex;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .card {
-    border-radius: 4px;
-    border: 1px solid #eee;
-    background-color: white;
-    height: 400px;
-    width: 400px;
-    margin: 0 8px 16px;
-    padding: 16px;
-    line-height: 24px;
-  }
 </style>
 
 <!-- Toolbar -->
-
+<!-- 
 <div class="card-container" role="main">
   <div class="card">
-      <h5 class="title">Login To Test App</h5>
       <form [formGroup]="form" (ngSubmit)="submitLogin()">
         <div class="form-group">
           <label for="email">Email</label>
@@ -50,7 +28,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="email">Password</label>
+          <label for="password">Password</label>
           <input
             type="password"
             required
@@ -63,5 +41,32 @@
         <button type="submit" class="btn btn-primary">Login</button>
       </form>
   </div>
+</div> -->
+<div class="card-container" fxLayout="column"
+fxLayoutAlign="center center"role="main">
+<mat-card fxLayout="column" fxLayoutAlign="center stretch">
+  <mat-card-header fxFlex="20" fxLayoutAlign="center center">
+    <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlexOffset="10" fxFlex="80">
+    <form [formGroup]="loginForm">
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="username" required>
+        <mat-error>
+          Please provide a valid email address
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput type="password" placeholder="Password" formControlName="password" required>
+        <mat-error>
+          Please provide a valid password
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="submitLogin()" color="primary">Login</button>
+  </mat-card-actions>
+</mat-card>
 </div>
 <router-outlet></router-outlet>
